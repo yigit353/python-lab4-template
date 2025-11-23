@@ -1,0 +1,199 @@
+name: Autograding Tests
+
+on:
+  - push
+  - workflow_dispatch
+
+permissions:
+  checks: write
+  actions: read
+  contents: read
+
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest
+
+    - name: Exercise 1 - Extract Domain from URL
+      id: exercise-1
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Exercise 1 - Extract Domain from URL
+        setup-command: ''
+        command: python -m pytest test_lab4.py::TestLab4::test_exercise1_basic test_lab4.py::TestLab4::test_exercise1_no_www test_lab4.py::TestLab4::test_exercise1_http test_lab4.py::TestLab4::test_exercise1_subdomain -v
+        timeout: 10
+        max-score: 2
+
+    - name: Exercise 2 - Parse Query Parameters
+      id: exercise-2
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Exercise 2 - Parse Query Parameters
+        setup-command: ''
+        command: python -m pytest test_lab4.py::TestLab4::test_exercise2_basic test_lab4.py::TestLab4::test_exercise2_single_param test_lab4.py::TestLab4::test_exercise2_no_params test_lab4.py::TestLab4::test_exercise2_multiple_params -v
+        timeout: 10
+        max-score: 2
+
+    - name: Exercise 3 - Count Keyword Occurrences
+      id: exercise-3
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Exercise 3 - Count Keyword Occurrences
+        setup-command: ''
+        command: python -m pytest test_lab4.py::TestLab4::test_exercise3_basic test_lab4.py::TestLab4::test_exercise3_not_found test_lab4.py::TestLab4::test_exercise3_case_insensitive test_lab4.py::TestLab4::test_exercise3_partial_match -v
+        timeout: 10
+        max-score: 2
+
+    - name: Exercise 4 - Clean Response Data
+      id: exercise-4
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Exercise 4 - Clean Response Data
+        setup-command: ''
+        command: python -m pytest test_lab4.py::TestLab4::test_exercise4_basic test_lab4.py::TestLab4::test_exercise4_multiple_spaces test_lab4.py::TestLab4::test_exercise4_already_clean test_lab4.py::TestLab4::test_exercise4_tabs_newlines -v
+        timeout: 10
+        max-score: 2
+
+    - name: Exercise 5 - Extract Status Code
+      id: exercise-5
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Exercise 5 - Extract Status Code
+        setup-command: ''
+        command: python -m pytest test_lab4.py::TestLab4::test_exercise5_200 test_lab4.py::TestLab4::test_exercise5_404 test_lab4.py::TestLab4::test_exercise5_500 test_lab4.py::TestLab4::test_exercise5_type -v
+        timeout: 10
+        max-score: 2
+
+    - name: Exercise 6 - Format Timestamp
+      id: exercise-6
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Exercise 6 - Format Timestamp
+        setup-command: ''
+        command: python -m pytest test_lab4.py::TestLab4::test_exercise6_basic test_lab4.py::TestLab4::test_exercise6_different_time test_lab4.py::TestLab4::test_exercise6_format test_lab4.py::TestLab4::test_exercise6_no_seconds -v
+        timeout: 10
+        max-score: 2
+
+    - name: Exercise 7 - Simple Email Validation
+      id: exercise-7
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Exercise 7 - Simple Email Validation
+        setup-command: ''
+        command: python -m pytest test_lab4.py::TestLab4::test_exercise7_valid test_lab4.py::TestLab4::test_exercise7_no_at test_lab4.py::TestLab4::test_exercise7_no_dot test_lab4.py::TestLab4::test_exercise7_dot_before_at test_lab4.py::TestLab4::test_exercise7_multiple_at -v
+        timeout: 10
+        max-score: 2
+
+    - name: Exercise 8 - Parse Simple JSON
+      id: exercise-8
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Exercise 8 - Parse Simple JSON
+        setup-command: ''
+        command: python -m pytest test_lab4.py::TestLab4::test_exercise8_basic test_lab4.py::TestLab4::test_exercise8_number test_lab4.py::TestLab4::test_exercise8_not_found test_lab4.py::TestLab4::test_exercise8_boolean -v
+        timeout: 10
+        max-score: 3
+
+    - name: Exercise 9 - Parse Nested JSON
+      id: exercise-9
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Exercise 9 - Parse Nested JSON
+        setup-command: ''
+        command: python -m pytest test_lab4.py::TestLab4::test_exercise9_basic test_lab4.py::TestLab4::test_exercise9_deep_nest test_lab4.py::TestLab4::test_exercise9_not_found_outer test_lab4.py::TestLab4::test_exercise9_not_found_inner -v
+        timeout: 10
+        max-score: 3
+
+    - name: Exercise 10 - Count JSON Array Items
+      id: exercise-10
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Exercise 10 - Count JSON Array Items
+        setup-command: ''
+        command: python -m pytest test_lab4.py::TestLab4::test_exercise10_basic test_lab4.py::TestLab4::test_exercise10_numbers test_lab4.py::TestLab4::test_exercise10_empty_array test_lab4.py::TestLab4::test_exercise10_key_not_found test_lab4.py::TestLab4::test_exercise10_not_array -v
+        timeout: 10
+        max-score: 3
+
+    - name: Exercise 11 - Extract All Values for Key
+      id: exercise-11
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Exercise 11 - Extract All Values for Key
+        setup-command: ''
+        command: python -m pytest test_lab4.py::TestLab4::test_exercise11_basic test_lab4.py::TestLab4::test_exercise11_numbers test_lab4.py::TestLab4::test_exercise11_mixed test_lab4.py::TestLab4::test_exercise11_missing_key -v
+        timeout: 10
+        max-score: 3
+
+    - name: Exercise 12 - Calculate Average from JSON
+      id: exercise-12
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Exercise 12 - Calculate Average from JSON
+        setup-command: ''
+        command: python -m pytest test_lab4.py::TestLab4::test_exercise12_basic test_lab4.py::TestLab4::test_exercise12_exact test_lab4.py::TestLab4::test_exercise12_single test_lab4.py::TestLab4::test_exercise12_type -v
+        timeout: 10
+        max-score: 3
+
+    - name: Exercise 13 - Fix Broken JSON
+      id: exercise-13
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Exercise 13 - Fix Broken JSON
+        setup-command: ''
+        command: python -m pytest test_lab4.py::TestLab4::test_exercise13_single_quotes test_lab4.py::TestLab4::test_exercise13_trailing_comma_dict test_lab4.py::TestLab4::test_exercise13_trailing_comma_array test_lab4.py::TestLab4::test_exercise13_complex -v
+        timeout: 10
+        max-score: 5
+
+    - name: Exercise 14 - Parse CSV-Like String
+      id: exercise-14
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Exercise 14 - Parse CSV-Like String
+        setup-command: ''
+        command: python -m pytest test_lab4.py::TestLab4::test_exercise14_basic test_lab4.py::TestLab4::test_exercise14_structure test_lab4.py::TestLab4::test_exercise14_single_row test_lab4.py::TestLab4::test_exercise14_many_columns -v
+        timeout: 10
+        max-score: 5
+
+    - name: Exercise 15 - Process Mixed API Response
+      id: exercise-15
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Exercise 15 - Process Mixed API Response
+        setup-command: ''
+        command: python -m pytest test_lab4.py::TestLab4::test_exercise15_basic test_lab4.py::TestLab4::test_exercise15_types test_lab4.py::TestLab4::test_exercise15_data_content test_lab4.py::TestLab4::test_exercise15_structure -v
+        timeout: 10
+        max-score: 5
+
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        EXERCISE-1_RESULTS: "${{steps.exercise-1.outputs.result}}"
+        EXERCISE-2_RESULTS: "${{steps.exercise-2.outputs.result}}"
+        EXERCISE-3_RESULTS: "${{steps.exercise-3.outputs.result}}"
+        EXERCISE-4_RESULTS: "${{steps.exercise-4.outputs.result}}"
+        EXERCISE-5_RESULTS: "${{steps.exercise-5.outputs.result}}"
+        EXERCISE-6_RESULTS: "${{steps.exercise-6.outputs.result}}"
+        EXERCISE-7_RESULTS: "${{steps.exercise-7.outputs.result}}"
+        EXERCISE-8_RESULTS: "${{steps.exercise-8.outputs.result}}"
+        EXERCISE-9_RESULTS: "${{steps.exercise-9.outputs.result}}"
+        EXERCISE-10_RESULTS: "${{steps.exercise-10.outputs.result}}"
+        EXERCISE-11_RESULTS: "${{steps.exercise-11.outputs.result}}"
+        EXERCISE-12_RESULTS: "${{steps.exercise-12.outputs.result}}"
+        EXERCISE-13_RESULTS: "${{steps.exercise-13.outputs.result}}"
+        EXERCISE-14_RESULTS: "${{steps.exercise-14.outputs.result}}"
+        EXERCISE-15_RESULTS: "${{steps.exercise-15.outputs.result}}"
+      with:
+        runners: exercise-1,exercise-2,exercise-3,exercise-4,exercise-5,exercise-6,exercise-7,exercise-8,exercise-9,exercise-10,exercise-11,exercise-12,exercise-13,exercise-14,exercise-15
