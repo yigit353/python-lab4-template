@@ -1,12 +1,12 @@
 # ==========================================
-# LAB 3: FUNCTIONS AND WEB DATA PROCESSING
-# Advanced Python Course - Week 3
+# LAB 4: FUNCTIONS AND WEB DATA PROCESSING
+# Advanced Python Course - Week 7
 # ==========================================
 # 
 # INSTRUCTIONS:
 # - Complete each exercise function below
 # - Do not change function names or parameters
-# - Test your code by running: python test_lab3.py
+# - Test your code by running: python test_lab4.py
 # - Submit by pushing to your GitHub repository
 # 
 # SKILLS PRACTICED:
@@ -542,4 +542,4 @@ if __name__ == "__main__":
         print(f"Exercise 8 Error: {e}")
     
     print("=" * 50)
-    print("\nFix the errors above, then run: python test_lab3.py")
+    print("\nFix the errors above, then run: python test_lab4.py")

@@ -1,4 +1,4 @@
-# Lab 3 Quick Reference Card
+# Lab 4 Quick Reference Card
 ## Functions and Web Data Processing - Cheat Sheet
 
 ⚠️ **TEMPLATE HAS INTENTIONAL ERRORS - FIX THEM!**
@@ -204,7 +204,7 @@ def average(numbers):
 
 ```bash
 # Run all tests
-python test_lab3.py
+python test_lab4.py
 
 # Expected output shows pass/fail for each
 # Score calculated at the end
@@ -243,7 +243,7 @@ python test_lab3.py
 
 - [ ] All functions return correct types (int vs str vs dict)
 - [ ] No syntax errors (code runs)
-- [ ] Tests pass locally (`python test_lab3.py`)
+- [ ] Tests pass locally (`python test_lab4.py`)
 - [ ] Code pushed to GitHub
 - [ ] GitHub Actions shows green checkmark ✅
 - [ ] Check your score in Actions tab
@@ -267,4 +267,4 @@ python test_lab3.py
 
 ---
 
-*Need more help? Check README_lab3.md for detailed examples and explanations.*
+*Need more help? Check README_lab4.md for detailed examples and explanations.*

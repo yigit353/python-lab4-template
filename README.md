@@ -18,18 +18,18 @@ cd <repository-name>
 ```
 
 ### 3. Complete the Exercises
-Open `lab3_exercises.py` and complete each function. **The template has intentional errors** - don't just copy-paste!
+Open `lab4_exercises.py` and complete each function. **The template has intentional errors** - don't just copy-paste!
 
 ### 4. Test Your Code Locally
 ```bash
-python test_lab3.py
+python test_lab4.py
 ```
 
 This will run all tests and show you which exercises pass/fail.
 
 ### 5. Submit Your Work
 ```bash
-git add lab3_exercises.py
+git add lab4_exercises.py
 git commit -m "Complete Lab 3 exercises"
 git push
 ```

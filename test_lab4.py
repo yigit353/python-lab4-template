@@ -403,7 +403,7 @@ class TestLab4(unittest.TestCase):
 def print_score():
     """Calculate and print the score"""
     loader = unittest.TestLoader()
-    suite = loader.loadTestsFromTestCase(TestLab3)
+    suite = loader.loadTestsFromTestCase(TestLab4)
     runner = unittest.TextTestRunner(verbosity=2)
     result = runner.run(suite)
 
