@@ -3,7 +3,7 @@ import json
 from lab4_exercises import *
 
 
-class TestLab3(unittest.TestCase):
+class TestLab4(unittest.TestCase):
 
     # ==========================================
     # EXERCISE 1 TESTS (2 points)
